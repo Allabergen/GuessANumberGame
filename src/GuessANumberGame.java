@@ -5,7 +5,7 @@ import java.util.Scanner;
  * @author Allabergen Suleimenov
  *         allromis@gmail.com
  *         allabergen.su@gmail.com
- * @version 1.0
+ * @version 1.1
  */
 public class GuessANumberGame {
     public static int number;
@@ -16,6 +16,12 @@ public class GuessANumberGame {
     public static Random rand;
 
     public static void main(String[] args) {
+        System.out.println("Welcome to \"Guess A Number Game\"");
+        playGame();
+        chooseOption();
+    }
+
+    public static void playGame() {
         in = new Scanner(System.in);
         rand = new Random();
 
@@ -37,6 +43,30 @@ public class GuessANumberGame {
         }
 
         System.out.println("You WIN!!!\nYou guessed a number in " + count + " steps");
+        count = 0;
+    }
+
+    public static void chooseOption() {
+        int choice;
+
+        do {
+            showMenu();
+            choice = enterNumber();
+
+            switch (choice) {
+                case 1:
+                    playGame();
+                case 0:
+                    System.out.println("Bye bye!");
+                    break;
+            }
+        } while (choice != 0);
+    }
+
+    public static void showMenu() {
+        System.out.print("\nEnter to choose: \n" +
+                "1 - Play Again\n" +
+                "0 - Exit\n");
     }
 
     public static int enterNumber() {
